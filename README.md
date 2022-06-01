@@ -93,15 +93,19 @@
 ```shell
 # 谈谈我对threadlocal内存泄露的理解（原因 + 结局方案）
  	内存泄露：不再会被使用的对象占用的内存不能被回收，就是内存泄露，一般发生在堆中
-  	强引用：使用最多的引用，平常使用的new和反射获取的对象就是强引用，不会被垃圾回收器回收，当内存空间不足时，JVM宁愿抛出OOM异常也不回收这种对象如果想回收这个对象，可以将其引用赋值为null，JVM就会在合适的时间回收   
+  	强引用：使用最多的引用，平常使用的new和反射获取的对象就是强引用，不会被垃圾回收器回收，
+  		   当内存空间不足时，JVM宁愿抛出OOM异常也不回收这种对象如果想回收这个对象，
+  		   可以将其引用赋值为null，JVM就会在合适的时间回收   
     弱引用：JVM进行内存回收时，无论内存是否充足，都会将其回收，对应的类就是=> java.lang.WeakReference
     
 ----------------------------------------------------------------------------------------------------------
 理解了这些名词，下面来看解释：
-        首先，先放结论，解决内存泄露，就是释放堆中key引用的堆的对象和value引用的堆中的对象。具体的解决方案是使用弱引用回收threadlocal的key，使用remove回收threadlocal的value，才能避免内存泄露问题
-        (1)Thread内的threadlocalmap生命周期跟thread一样，都是线程生命周期结束才回收，这就导致一个问题，就算我们栈帧中释放了
-           threadlocal，但是由于threadlocalmap的entry中还存有threadlocal的引用，并且我访问不到，所以这个threadlocal不
-           能被释放，value也是同理导致了内存泄露。
+        首先，先放结论，解决内存泄露，就是释放堆中key引用的堆的对象和value引用的堆中的对象。
+        		具体的解决方案是使用弱引用回收threadlocal的key，使用remove回收threadlocal的value
+        		，才能避免内存泄露问题
+        (1)Thread内的threadlocalmap生命周期跟thread一样，都是线程生命周期结束才回收，这就导致一个问题，
+           就算我们栈帧中释放了threadlocal，但是由于threadlocalmap的entry中还存有threadlocal的引用，
+           并且我访问不到，所以这个threadlocal不  能被释放，value也是同理导致了内存泄露。
         (2)解决key的问题，使用弱引用，只要栈帧中释放了threadlocal的强引用，JVM就会回收key在堆中的对象
         (3)解决value的问题，需要程序员显示使用remove方法，将value置位null，JVM才会回收value对象
 
