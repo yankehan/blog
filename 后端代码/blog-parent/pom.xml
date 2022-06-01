@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zxk</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>1.0.0</version>
+    <modules>
+        <module>blog-api</module>
+    </modules>
+    <!--说明:packaging标签有三个值:jar,war,pom
+        jar:打jar包
+        war:打war包
+        pom:声明这是父工程
+    -->
+    <packaging>pom</packaging>
+
+    <!--继承springboot父工程，变成一个springboot项目-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.0</version>
+        <relativePath/>
+    </parent>
+
+
+    <!--设置编码为UTF-8 + jdk的版本为1.8-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+
+    <!--在父工程中设置常用依赖版本号-->
+    <!--dependencyManagement标签
+        子项目想要继承就==>必须<==在自己的pom中再声明一次
+                但是不需要写版本号默认继承父pom中的版本
+                    如果指定了版本号就是用自己的版本
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!--JSON工具包-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.76</version>
+            </dependency>
+            <!--MybatisPlus依赖-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.4.3</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--maven打包插件
+        spring boot 借助spring-boot-maven-plugin
+        将所有应用启动运行所需要的jar都包含进来，
+        从逻辑上将具备了独立运行的条件
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
