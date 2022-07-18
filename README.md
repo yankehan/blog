@@ -34,13 +34,13 @@
 
 推导步骤：
 
-- 相信你打开ReadME也是这种情况
+- 相信你打开ReadME也是这种情况![](https://pic.imgdb.cn/item/62d4c8aff54cd3f9378c75ba.png)
 
-![image-20220718102622108](README.assets/image-20220718102622108.png)
+
 
 - 点一下蓝色链接过去看看
 
-![image-20220718102801642](README.assets/image-20220718102801642.png)
+![](https://pic.imgdb.cn/item/62d4c940f54cd3f9378d3b93.png)
 
 - 这个`raw.githubusercontent.com`网站是什么呢？
 
@@ -59,9 +59,9 @@
 199.232.68.133 githubusercontent.com
 ```
 
-![image-20220718103115049](README.assets/image-20220718103115049.png)
+![](https://pic.imgdb.cn/item/62d4c95ff54cd3f9378d6ba2.png)
 
-
+- 还有一种方法，就是我不从**国外服务器**上加载图片了，我从**国内服务器**上加载图片也可以
 
 
 
@@ -87,23 +87,23 @@
 
 - 首页
 
-![image-20220601215034825](./README.assets/image-20220601215034825.png)
+![image-20220601215034825](https://pic.imgdb.cn/item/62d4c9a2f54cd3f9378dc439.png)
 
 - 文章分类
 
-![image-20220601215054921](./README.assets/image-20220601215054921.png)
+![image-20220601215054921](https://pic.imgdb.cn/item/62d4c9d4f54cd3f9378dfad3.png)
 
 - 标签分类
 
-![image-20220601205946276](./README.assets/image-20220601205946276.png)
+![image-20220601205946276](https://pic.imgdb.cn/item/62d4c9f5f54cd3f9378e2645.png)
 
 - 文章归档
 
-![image-20220601215115123](./README.assets/image-20220601215115123.png)
+![image-20220601215115123](https://pic.imgdb.cn/item/62d4ca09f54cd3f9378e3e9b.png)
 
 - 文章阅读
 
-![image-20220601215132970](./README.assets/image-20220601215132970.png)
+![image-20220601215132970](https://pic.imgdb.cn/item/62d4ca1bf54cd3f9378e5742.png)
 
 
 
@@ -117,9 +117,9 @@
 
 1. ==单点登录问题==：使用使用 JWT+Redis 实现单点登录功能，优点是用户访问和认证速度块，并且相比于cookie更加安全  
 
-<img src="./README.assets/image-20220601211629616.png" alt="image-20220601211629616" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4ca44f54cd3f9378e9055.png" alt="image-20220601211629616" style="zoom:67%;" />
 
-<img src="./README.assets/image-20220601212804858.png" alt="image-20220601212804858" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4ca63f54cd3f9378ebfc2.png" alt="image-20220601212804858" style="zoom:67%;" />
 
 ---
 
@@ -137,13 +137,13 @@
 线程私有变量，相当于在这个线程的声明周期内，可以随时获取这个变量的值
 ```
 
-<img src="./README.assets/image-20220601213401725.png" alt="image-20220601213401725" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4ca9af54cd3f9378efd14.png" alt="image-20220601213401725" style="zoom:67%;" />
 
-<img src="./README.assets/image-20220601213540437.png" alt="image-20220601213540437" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4ca9af54cd3f9378efd1e.png" alt="image-20220601213540437" style="zoom:67%;" />
 
 最后一定不要忘记，在拦截器的后置处理方法中，手动清除value，防止内存泄露的风险
 
-![image-20220601213705795](./README.assets/image-20220601213705795.png)
+![image-20220601213705795](https://pic.imgdb.cn/item/62d4ca9af54cd3f9378efd2a.png)
 
 ```shell
 # 谈谈我对threadlocal内存泄露的理解（原因 + 结局方案）
@@ -188,17 +188,17 @@
 
 - 一方面，将图片资源放到七牛云，减少系统带宽压力
 
-![image-20220601214302883](./README.assets/image-20220601214302883.png)
+![image-20220601214302883](https://pic.imgdb.cn/item/62d4cad6f54cd3f9378f5135.png)
 
 改进前的系统：带宽1M，一篇文章图片和文字加在一起约0.5M，服务器每秒同时服务2个用户就到上线
 
-<img src="./README.assets/image-20220601214431291.png" alt="image-20220601214431291" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4cad6f54cd3f9378f513b.png" alt="image-20220601214431291" style="zoom:67%;" />
 
 改进后的系统：服务器带宽1M，文字16KB，约200多字，可以同时发1024 * 1024 / 16 篇文章。
 
 ​							资源服务器50M，图片约0.5M，可以同时发50 / 0.5 张图片
 
-<img src="./README.assets/image-20220601214726279.png" alt="image-20220601214726279" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4cad6f54cd3f9378f5153.png" alt="image-20220601214726279" style="zoom:67%;" />
 
 - 另一方面，优化文章查询功能的处理逻辑
 
@@ -207,9 +207,9 @@
 改进：将修改文章次数的任务提交给线程池，异步操作，直接返回结果，这样一来速度自然一下就上来了
 ```
 
-<img src="./README.assets/image-20220601215500480.png" alt="image-20220601215500480" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4cb14f54cd3f9378f97ae.png" alt="image-20220601215500480" style="zoom:67%;" />
 
-<img src="./README.assets/image-20220601215554246.png" alt="image-20220601215554246" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4cb14f54cd3f9378f97b2.png" alt="image-20220601215554246" style="zoom:67%;" />
 
 ---
 
@@ -225,15 +225,15 @@
 
 4. ==日志处理和缓存处理问题==：使用 AOP+注解+反射 进行统一的日志和缓存处理  
 
-<img src="./README.assets/image-20220601220002714.png" alt="image-20220601220002714" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4cb32f54cd3f9378fb98a.png" alt="image-20220601220002714" style="zoom:67%;" />
 
 具体一些反射的操作
 
-<img src="./README.assets/image-20220601220240311.png" alt="image-20220601220240311" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4cb32f54cd3f9378fb98f.png" alt="image-20220601220240311" style="zoom:67%;" />
 
 缓存操作，也是同理
 
-<img src="./README.assets/image-20220601220409882.png" alt="image-20220601220409882" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/62d4cb32f54cd3f9378fb995.png" alt="image-20220601220409882" style="zoom:67%;" />
 
 
 
