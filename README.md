@@ -32,23 +32,23 @@
 
 - 首页
 
-![image-20220601215034825](README.assets/image-20220601215034825.png)
+![image-20220601215034825](./README.assets/image-20220601215034825.png)
 
 - 文章分类
 
-![image-20220601215054921](README.assets/image-20220601215054921.png)
+![image-20220601215054921](./README.assets/image-20220601215054921.png)
 
 - 标签分类
 
-![image-20220601205946276](README.assets/image-20220601205946276.png)
+![image-20220601205946276](./README.assets/image-20220601205946276.png)
 
 - 文章归档
 
-![image-20220601215115123](README.assets/image-20220601215115123.png)
+![image-20220601215115123](./README.assets/image-20220601215115123.png)
 
 - 文章阅读
 
-![image-20220601215132970](README.assets/image-20220601215132970.png)
+![image-20220601215132970](./README.assets/image-20220601215132970.png)
 
 
 
@@ -62,9 +62,9 @@
 
 1. ==单点登录问题==：使用使用 JWT+Redis 实现单点登录功能，优点是用户访问和认证速度块，并且相比于cookie更加安全  
 
-<img src="README.assets/image-20220601211629616.png" alt="image-20220601211629616" style="zoom:67%;" />
+<img src="./README.assets/image-20220601211629616.png" alt="image-20220601211629616" style="zoom:67%;" />
 
-<img src="README.assets/image-20220601212804858.png" alt="image-20220601212804858" style="zoom:67%;" />
+<img src="./README.assets/image-20220601212804858.png" alt="image-20220601212804858" style="zoom:67%;" />
 
 ---
 
@@ -76,19 +76,19 @@
 
 2. ==用户信息获取问题==：使用ThreadLocal保存用户信息，请求的线程之内可以随时获取登录用户的信息，在后置拦截器中做了value的删除，防止了内存泄露  
 
-<img src="README.assets/image-20220601213111672.png" alt="image-20220601213111672" style="zoom:50%;" />
+<img src="./README.assets/image-20220601213111672.png" alt="image-20220601213111672" style="zoom:50%;" />
 
 ```shell
 线程私有变量，相当于在这个线程的声明周期内，可以随时获取这个变量的值
 ```
 
-<img src="README.assets/image-20220601213401725.png" alt="image-20220601213401725" style="zoom:67%;" />
+<img src="./README.assets/image-20220601213401725.png" alt="image-20220601213401725" style="zoom:67%;" />
 
-<img src="README.assets/image-20220601213540437.png" alt="image-20220601213540437" style="zoom:67%;" />
+<img src="./README.assets/image-20220601213540437.png" alt="image-20220601213540437" style="zoom:67%;" />
 
 最后一定不要忘记，在拦截器的后置处理方法中，手动清除value，防止内存泄露的风险
 
-![image-20220601213705795](README.assets/image-20220601213705795.png)
+![image-20220601213705795](./README.assets/image-20220601213705795.png)
 
 ```shell
 # 谈谈我对threadlocal内存泄露的理解（原因 + 结局方案）
@@ -133,17 +133,17 @@
 
 - 一方面，将图片资源放到七牛云，减少系统带宽压力
 
-![image-20220601214302883](README.assets/image-20220601214302883.png)
+![image-20220601214302883](./README.assets/image-20220601214302883.png)
 
 改进前的系统：带宽1M，一篇文章图片和文字加在一起约0.5M，服务器每秒同时服务2个用户就到上线
 
-<img src="README.assets/image-20220601214431291.png" alt="image-20220601214431291" style="zoom:67%;" />
+<img src="./README.assets/image-20220601214431291.png" alt="image-20220601214431291" style="zoom:67%;" />
 
 改进后的系统：服务器带宽1M，文字16KB，约200多字，可以同时发1024 * 1024 / 16 篇文章。
 
 ​							资源服务器50M，图片约0.5M，可以同时发50 / 0.5 张图片
 
-<img src="README.assets/image-20220601214726279.png" alt="image-20220601214726279" style="zoom:67%;" />
+<img src="./README.assets/image-20220601214726279.png" alt="image-20220601214726279" style="zoom:67%;" />
 
 - 另一方面，优化文章查询功能的处理逻辑
 
@@ -152,9 +152,9 @@
 改进：将修改文章次数的任务提交给线程池，异步操作，直接返回结果，这样一来速度自然一下就上来了
 ```
 
-<img src="README.assets/image-20220601215500480.png" alt="image-20220601215500480" style="zoom:67%;" />
+<img src="./README.assets/image-20220601215500480.png" alt="image-20220601215500480" style="zoom:67%;" />
 
-<img src="README.assets/image-20220601215554246.png" alt="image-20220601215554246" style="zoom:67%;" />
+<img src="./README.assets/image-20220601215554246.png" alt="image-20220601215554246" style="zoom:67%;" />
 
 ---
 
@@ -170,15 +170,15 @@
 
 4. ==日志处理和缓存处理问题==：使用 AOP+注解+反射 进行统一的日志和缓存处理  
 
-<img src="README.assets/image-20220601220002714.png" alt="image-20220601220002714" style="zoom:67%;" />
+<img src="./README.assets/image-20220601220002714.png" alt="image-20220601220002714" style="zoom:67%;" />
 
 具体一些反射的操作
 
-<img src="README.assets/image-20220601220240311.png" alt="image-20220601220240311" style="zoom:67%;" />
+<img src="./README.assets/image-20220601220240311.png" alt="image-20220601220240311" style="zoom:67%;" />
 
 缓存操作，也是同理
 
-<img src="README.assets/image-20220601220409882.png" alt="image-20220601220409882" style="zoom:67%;" />
+<img src="./README.assets/image-20220601220409882.png" alt="image-20220601220409882" style="zoom:67%;" />
 
 
 
