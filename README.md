@@ -26,11 +26,64 @@
 
 
 
+# 小插曲
+
+问题引入：
+
+​		好多人说图片打不开，然后我去试了一下，能打开呀。但是，我一关掉VPN，图片就不能访问了
+
+推导步骤：
+
+- 相信你打开ReadME也是这种情况
+
+![image-20220718102622108](README.assets/image-20220718102622108.png)
+
+- 点一下蓝色链接过去看看
+
+![image-20220718102801642](README.assets/image-20220718102801642.png)
+
+- 这个`raw.githubusercontent.com`网站是什么呢？
+
+经过查阅：**raw.githubusercontent.com** 是github用来存储用户上传文件（不是项目仓库的文件，而是issue里的图片之类的）的服务地址。放在亚马逊s3上。是github 的素材服务器 (assets server), 避免跟主服务抢占负载。
+
+- 知道问题的原因，解决了一半问题了已经
+
+既然我访问不了raw.githubusercontent.com，说明它被**墙**了，通过DNS获取不到IP了，所以需要手动改hosts文件
+
+- ==**解决步骤：**==
+
+打开C:\Windows\System32\drivers\etc下的host文件，添加一个域名映射
+
+```shell
+199.232.68.133 raw.githubusercontent.com
+199.232.68.133 githubusercontent.com
+```
+
+![image-20220718103115049](README.assets/image-20220718103115049.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 截图
 
 （稍微耐心等待一下，大量截图加载较慢，也可下载下来查看）
+
+（如果图片加载不出来，蓝字，就看下前面的教程）
 
 - 首页
 
